@@ -1,8 +1,10 @@
 # main.py
+from config import COLORS, FONTS
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
+from kivy.uix.textinput import TextInput #  Importa Text
 from db_handler import create_table, add_task, get_tasks, delete_task
 
 class ToDoApp(App):
@@ -42,8 +44,10 @@ class ToDoApp(App):
 
     def add_task(self, instance):
         task_text = self.task_input.text
-        add_task(task_text)
-        self.load_tasks()
+        if task_text: # Asegurar de que no esté vacio  
+            add_task(task_text)
+            self.task_input.text = "" # Limpia el campo de entrada
+            self.load_tasks()
 
     def remove_task(self, task_id):
         delete_task(task_id)
