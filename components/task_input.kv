@@ -1,0 +1,9 @@
+<TaskInput>:
+    BoxLayout:
+        orientation: 'horizontal'
+        TextInput:
+            id: task_input
+            hint_text: 'Agregar nueva tarea...'
+        Button:
+            text: 'Añadir'
+            on_press: root.add_task()
